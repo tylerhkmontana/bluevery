@@ -17,9 +17,6 @@ const profile = document.getElementById('user-profile')
 const search = document.getElementById('search-user')
 
 
-allChat.scrollTop = allChat.scrollHeight
-privateChat.scrollTop = privateChat.scrollHeight
-
 // this user connected
 socket.on('welcome', obj => {
   allChat.innerHTML = `<p><span id="server-span">server</span> ${obj.msg}</p>`
@@ -64,6 +61,7 @@ socket.on('all server', obj => {
   obj.user.id === userInfo.id ? 
   allChat.innerHTML += `<p><span style="color: ${obj.user.color}; font-size: 18px;">me:</span> ${obj.msg}</p>` :
   allChat.innerHTML += `<p><span id="user-span" style="background-color: ${obj.user.color};">${obj.user.name}</span> ${obj.msg}</p>`
+  allChat.scrollTop = allChat.scrollHeight
 })
 
 // search user
@@ -78,6 +76,8 @@ search.addEventListener('input', function() {
   })
 })
 
+// recieve private message
 socket.on('private message', obj => {
   privateChat.innerHTML += `<p><span style="color: ${obj.user.color};">${obj.user.name}</span>#${obj.user.id}<br>:${obj.msg}</p>`
+  privateChat.scrollTop = privateChat.scrollHeight
 })
