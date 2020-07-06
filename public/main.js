@@ -16,6 +16,10 @@ const message = document.getElementById('message-input')
 const profile = document.getElementById('user-profile')
 const search = document.getElementById('search-user')
 
+
+allChat.scrollTop = allChat.scrollHeight
+privateChat.scrollTop = privateChat.scrollHeight
+
 // this user connected
 socket.on('welcome', obj => {
   allChat.innerHTML = `<p><span id="server-span">server</span> ${obj.msg}</p>`
