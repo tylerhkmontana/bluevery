@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: royalblue;
+    }
+
+    input, button {
+      border: none;
+      outline: none;
+      padding: 5px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    #app-title {
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    #enter-form {
+      color: white;
+      width: 40vw;
+      height: 30vh;
+      margin: 200px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #enter-form form {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #name-input {
+      width: 300px;
+      background-color: rgba(64, 224, 208, 0.699);
+      color: white;
+    }
+
+    #enter-button {
+      background-color: rgba(238, 130, 238, 0.712);
+      color: white;
+    }
+
+    #enter-button:hover {
+      background-color: violet;
+      cursor: pointer;
+    }
+  </style>
+  <title>Blue-very</title>
+</head>
+<body>
+  <div id="app-title">
+    <h1>Blue-very</h1>
+  </div>
+  
+  <div id="enter-form">
+    <h2>who are you?</h2>
+    <form action="chat.html">
+      <input id="name-input" type="text" name="name">
+      <input type="color" placeholder="pick your color" name="color">
+      <button id="enter-button" type="submit">enter</button>
+    </form>
+  </div>
+  
+  <script>
+    const name = document.getElementById('name-input')
+    const enter = document.getElementById('enter-button')
+
+  </script>
+</body>
+</html>

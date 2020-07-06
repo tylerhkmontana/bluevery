@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: royalblue;
+}
+
+input {
+  border: none;
+  outline: none;
+  background-color: rgba(64, 224, 208, 0.705);
+  padding: 5px;
+  color: white;
+}
+
+#server-span {
+  border: 1px solid crimson;
+  color: crimson;
+  font-weight: bold;
+  padding: 2px 5px;
+}
+
+#user-span {
+  color: white;
+  border-radius: 20px;
+  padding: 2px 5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(238, 130, 238, 0.692);
+}
+
+.chat-room {
+  display: flex;
+  flex-direction: column;
+  border: 2px dotted white;
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.chat-room h2 {
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+
+#app-title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+#main {
+  display: flex;
+}
+
+#user-list, #all-chat, #private-chat {
+  height: 70vh;
+}
+
+#user-list {
+  flex: 1;
+}
+
+#user-list > div {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#user-list input {
+  background-color: rgba(238, 130, 238, 0.712);
+}
+
+#user-list input::placeholder {
+  color: white;
+  text-align: center;
+}
+
+#connected-users {
+  margin-top: 10px;
+  padding: 5px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.822);
+  color: rgb(145, 54, 145);
+  overflow: auto;
+}
+
+#all-chat {
+  flex: 2;
+}
+
+.chat-room > div {
+  height: 100%;
+  margin: 15px 30px 30px 30px;
+  color: white;
+  overflow: auto;
+  line-height: 1.7em;
+}
+
+#private-chat {
+  flex: 1;
+}
+
+#chat-input {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#chat-input input {
+  width: 400px;
+}
+
+#chat-input input::placeholder {
+  text-align: center;
+  color: white;
+}
+
+#chat-input button {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  background-color: rgba(238, 130, 238, 0.705);
+  color: white;
+}
+
+#chat-input button:hover {
+  cursor: pointer;
+  background-color: violet;
+}
+
+#user-profile {
+  color: white;
+  text-align: center;
+}

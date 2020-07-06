@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Blue-very</title>
+</head>
+<body>
+  <div id="app-title">
+    <h1>Blue-very</h1>
+  </div>
+  
+
+  <div id="main">
+    <div id="user-list">
+      <div>
+        <input id="search-user" type="search" placeholder="search user here...">
+        <div id="connected-users">
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="all-chat">
+      <div class="chat-room">
+        <h2>All</h2>
+        <div id="all-chat-room">
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="private-chat">
+      <div class="chat-room">
+        <h2>Private</h2>
+        <div id="private-chat-room">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="user-profile"></h2>
+  <div id="chat-input">
+    <input id="message-input" type="text" placeholder="type your message here...">
+    <button id="send-button">send</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
