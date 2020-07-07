@@ -54,6 +54,7 @@
 
     #name-input::placeholder {
       color: white;
+      text-align: center;
     }
 
     #enter-button {
@@ -64,6 +65,12 @@
     #enter-button:hover {
       background-color: violet;
       cursor: pointer;
+    }
+
+    @media screen and (max-width: 700px) {
+      #enter-container {
+        width: 100%;
+      }
     }
   </style>
   <title>Blue-very</title>
@@ -77,8 +84,8 @@
     <h2>who are you?</h2>
     <p id="error-message" style="color: rgb(248, 59, 59); text-align: center; margin-top: 5px;"></p>
     <form id="enter-form" action="chat.html">
-      <input id="name-input" placeholder="your name here..." type="text" name="name">
       <input type="color" name="color">
+      <input id="name-input" placeholder="your name here..." type="text" name="name">
       <button id="enter-button" type="submit">enter</button>
     </form>
   </div>
