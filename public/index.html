@@ -30,7 +30,7 @@
       padding: 10px;
     }
 
-    #enter-form {
+    #enter-container {
       color: white;
       width: 40vw;
       height: 30vh;
@@ -40,7 +40,7 @@
       justify-content: center;
     }
 
-    #enter-form form {
+    #enter-form {
       margin-top: 20px;
       display: flex;
       justify-content: center;
@@ -49,6 +49,10 @@
     #name-input {
       width: 300px;
       background-color: rgba(64, 224, 208, 0.699);
+      color: white;
+    }
+
+    #name-input::placeholder {
       color: white;
     }
 
@@ -69,11 +73,12 @@
     <h1>Blue-very</h1>
   </div>
   
-  <div id="enter-form">
+  <div id="enter-container">
     <h2>who are you?</h2>
-    <form action="chat.html">
-      <input id="name-input" type="text" name="name">
-      <input type="color" placeholder="pick your color" name="color">
+    <p id="error-message" style="color: rgb(248, 59, 59); text-align: center; margin-top: 5px;"></p>
+    <form id="enter-form" action="chat.html">
+      <input id="name-input" placeholder="your name here..." type="text" name="name">
+      <input type="color" name="color">
       <button id="enter-button" type="submit">enter</button>
     </form>
   </div>
@@ -81,6 +86,15 @@
   <script>
     const name = document.getElementById('name-input')
     const enter = document.getElementById('enter-button')
+    const enterForm = document.getElementById('enter-form')
+    const error = document.getElementById('error-message')
+
+    enter.addEventListener('click', (e) => {
+      if(name.value.match(/.*#.*/)) {
+        e.preventDefault()
+        error.innerHTML = "**You can't include '#' in your name**"
+      }
+    })
 
   </script>
 </body>

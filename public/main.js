@@ -30,7 +30,7 @@ socket.on('welcome', obj => {
 socket.on('userlist', users => {
   connectedUsers.innerHTML = ''
   users.forEach(user => {
-    connectedUsers.innerHTML += `<p><span style="color: ${user.color};">${user.name}</span>#${user.id}</p>`
+    connectedUsers.innerHTML += `<p class="user-on"><span style="color: ${user.color};">${user.name}</span>#${user.id}</p>`
   })
 })
 
@@ -39,8 +39,12 @@ socket.on('user enter', user => {
   allChat.innerHTML += `<p><span id="server-span">server</span> <span id="user-span" style="background-color:${user.color};">${user.name}</span>#${user.id} has joined</p>`
 })
 
-socket.on('user leave', user => {
-  allChat.innerHTML += `<p><span id="server-span">server</span> <span id="user-span" style="background-color:${user.color};">${user.name}</span>#${user.id} has left</p>`
+socket.on('user leave', obj => {
+  allChat.innerHTML += `<p><span id="server-span">server</span> <span id="user-span" style="background-color:${obj.leaveUser.color};">${obj.leaveUser.name}</span>#${obj.leaveUser.id} has left</p>`
+  connectedUsers.innerHTML = ''
+  obj.connectedUsers.forEach(user => {
+    connectedUsers.innerHTML += `<p class="user-on"><span style="color: ${user.color};">${user.name}</span>#${user.id}</p>`
+  })
 })
 
 //send message
@@ -76,8 +80,41 @@ search.addEventListener('input', function() {
   })
 })
 
+// select user to send private message
+connectedUsers.addEventListener('click', (e) => {
+  var eventSource = e.path[0]
+  if(eventSource.className === 'user-on') {
+    message.value = eventSource.textContent.slice(eventSource.textContent.indexOf("#")) + " "
+    message.focus()
+  }
+})
+
 // recieve private message
 socket.on('private message', obj => {
-  privateChat.innerHTML += `<p><span style="color: ${obj.user.color};">${obj.user.name}</span>#${obj.user.id}<br>:${obj.msg}</p>`
+  privateChat.innerHTML += 
+    `<p class="user-on" style="color: rgb(145, 54, 145);">
+      <span id="sender-span">from</span> 
+      <span style="color: ${obj.sender.color};">${obj.sender.name}</span>#${obj.sender.id}</p>
+    <p>:${obj.msg}</p>`
   privateChat.scrollTop = privateChat.scrollHeight
+})
+
+// private message sent
+socket.on('private message sent', obj => {
+  privateChat.innerHTML += 
+    `<p style="color: rgb(145, 54, 145);">
+      <span id="receiver-span">to</span> 
+      <span style="color: ${obj.receiver.color};">${obj.receiver.name}</span>
+      #${obj.receiver.id}
+    </p>
+    <p>:${obj.msg}</p>`
+  privateChat.scrollTop = privateChat.scrollHeight
+})
+
+privateChat.addEventListener('click', (e) => {
+  var eventSource = e.path[0]
+  if(eventSource.className === 'user-on') {
+    message.value = eventSource.textContent.slice(eventSource.textContent.indexOf("#")) + " "
+    message.focus()
+  }
 })

@@ -28,6 +28,22 @@ input {
   padding: 2px 5px;
 }
 
+#sender-span, #receiver-span {
+  border: 1px solid;
+  font-weight: bold;
+  padding: 2px 5px;
+}
+
+#sender-span {
+  border-color: fuchsia;
+  color: fuchsia;
+}
+
+#receiver-span {
+  border-color: greenyellow;
+  color: greenyellow;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -149,4 +165,9 @@ input {
 #user-profile {
   color: white;
   text-align: center;
+}
+
+.user-on:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

@@ -31,9 +31,12 @@ io.on('connection', (socket) => {
   socket.on('all client', obj => {
     if(obj.msg[0] === '#') {
       var targetId = obj.msg.split(" ")[0].slice(1)
-      connectedUsers.find(obj => obj.id === targetId) ? 
-        socket.to(targetId).emit('private message', { msg: obj.msg.slice(obj.msg.indexOf(" ")), user: obj.userInfo }) : 
+      if(connectedUsers.find(user => user.id === targetId)) {
+        socket.emit('private message sent', { msg: obj.msg.slice(obj.msg.indexOf(" ")), receiver: connectedUsers.find(user => user.id === targetId) })
+        socket.to(targetId).emit('private message', { msg: obj.msg.slice(obj.msg.indexOf(" ")), sender: obj.userInfo })
+      } else {
         io.emit('all server', { msg: obj.msg, user: obj.userInfo })
+      }
     } else {
       io.emit('all server', {msg: obj.msg, user: obj.userInfo })
     }
@@ -45,6 +48,6 @@ io.on('connection', (socket) => {
       var leaveUser = connectedUsers.splice(index, 1)[0];
     }
 
-    socket.broadcast.emit('user leave', leaveUser)
+    socket.broadcast.emit('user leave', { leaveUser, connectedUsers })
   })
 })
