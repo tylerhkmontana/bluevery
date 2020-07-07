@@ -171,3 +171,47 @@ input {
   cursor: pointer;
   text-decoration: underline;
 }
+
+@media screen and (max-width: 700px) {
+  #main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-room, #user-list div {
+    margin-top: 0;
+    height: 90%;
+  }
+
+  #private-chat {
+    margin-bottom: 50px;
+  }
+
+  #private-chat-room, #all-chat-room {
+    margin: 15px;
+  }
+
+  #chat-input {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  #chat-input input{
+    width: auto;
+    flex: 4;
+  }
+
+  #chat-input button {
+    flex: 1;
+  }
+
+  #user-profile {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+  }
+}
