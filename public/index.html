@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Honk&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link rel='icon' href='/blueberry.png'></link>
   <style>
     * {
       margin: 0;
@@ -11,37 +15,40 @@
 
     body {
       background-color: royalblue;
+      color: white;
+      font-family: "Kode Mono", monospace;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
     }
 
     input, button {
       border: none;
       outline: none;
       padding: 5px;
+      font-family: inherit;
     }
 
-    h2 {
-      text-align: center;
+    h1  {
+      font-family: "Honk", system-ui;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "MORF" 15,
+        "SHLN" 50;
+        font-size: 80px;
     }
 
-    #app-title {
-      color: white;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-    }
-
-    #enter-container {
-      color: white;
-      width: 40vw;
-      height: 30vh;
-      margin: 200px auto;
+    #container {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center; 
+      gap: 20px;
+      padding-top: 200px;
     }
 
     #enter-form {
-      margin-top: 20px;
       display: flex;
       justify-content: center;
     }
@@ -76,11 +83,9 @@
   <title>Blue-very</title>
 </head>
 <body>
-  <div id="app-title">
-    <h1>Blue-very</h1>
-  </div>
-  
-  <div id="enter-container">
+  <div id="container">
+    <h1>BLUE-VERY</h1>
+    <img src="/blueberry.png" width="250px"/>
     <h2>who are you?</h2>
     <p id="error-message" style="color: rgb(248, 59, 59); text-align: center; margin-top: 5px;"></p>
     <form id="enter-form" action="chat.html">
@@ -89,6 +94,7 @@
       <button id="enter-button" type="submit">enter</button>
     </form>
   </div>
+  
   
   <script>
     const name = document.getElementById('name-input')
