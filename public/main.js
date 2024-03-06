@@ -82,7 +82,8 @@ search.addEventListener('input', function() {
 
 // select user to send private message
 connectedUsers.addEventListener('click', (e) => {
-  var eventSource = e.path[0]
+  console.log('testing...')
+  var eventSource = e.composedPath()[0]
   if(eventSource.className === 'user-on') {
     message.value = eventSource.textContent.slice(eventSource.textContent.indexOf("#")) + " "
     message.focus()
@@ -112,7 +113,7 @@ socket.on('private message sent', obj => {
 })
 
 privateChat.addEventListener('click', (e) => {
-  var eventSource = e.path[0]
+  var eventSource = e.composedPath()[0]
   if(eventSource.className === 'user-on') {
     message.value = eventSource.textContent.slice(eventSource.textContent.indexOf("#")) + " "
     message.focus()
